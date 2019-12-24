@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+/soft/soft/x64
+
+/soft/.vs
