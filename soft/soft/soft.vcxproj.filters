@@ -33,6 +33,12 @@
     <ClCompile Include="test.cpp">
       <Filter>test</Filter>
     </ClCompile>
+    <ClCompile Include="LWPolyline.cpp">
+      <Filter>Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Polyline_3d.cpp">
+      <Filter>Entity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EntityBase.h">
@@ -45,6 +51,12 @@
       <Filter>Parse</Filter>
     </ClInclude>
     <ClInclude Include="Line.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="LWPolyline.h">
+      <Filter>Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Polyline_3d.h">
       <Filter>Entity</Filter>
     </ClInclude>
   </ItemGroup>
