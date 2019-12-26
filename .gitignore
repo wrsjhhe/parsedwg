@@ -10,7 +10,8 @@
 # Precompiled Headers
 *.gch
 *.pch
-
+*.pdb
+*.ilk
 # Compiled Dynamic libraries
 *.so
 *.dylib
@@ -35,3 +36,4 @@
 
 /soft/.vs
 /.vs
+/viewer/node_modules

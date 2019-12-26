@@ -13,7 +13,7 @@ public:
 private:
 	uint32_t					 m_num_points;
 	uint32_t					 m_num_bulges;
-	std::vector<Dwg_Bitcode_3BD> m_points;
+	std::vector<BITCODE_2RD> m_points;
 	std::vector<double>			 m_bulges;
 	double						 m_thickness;
 };
