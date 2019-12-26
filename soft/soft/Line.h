@@ -7,7 +7,6 @@ public:
 	virtual ~CLine();
 
 
-
 private:
 	Dwg_Bitcode_3BD m_start;
 	Dwg_Bitcode_3BD m_end;
