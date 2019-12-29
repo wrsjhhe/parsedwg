@@ -124,21 +124,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CadColorMap.cpp" />
     <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="EntityBase.cpp" />
     <ClCompile Include="LWPolyline.cpp" />
+    <ClCompile Include="ObjectBase.cpp" />
+    <ClCompile Include="ParseFile.cpp" />
     <ClCompile Include="Polyline_3d.cpp" />
+    <ClCompile Include="stringFunc.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="ParseObjectFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CadColorMap.h" />
     <ClInclude Include="Circle.h" />
+    <ClInclude Include="Layer.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="EntityBase.h" />
+    <ClInclude Include="ObjectBase.h" />
+    <ClInclude Include="ParseFile.h" />
     <ClInclude Include="ParseObjectFactory.h" />
     <ClInclude Include="LWPolyline.h" />
     <ClInclude Include="Polyline_3d.h" />
+    <ClInclude Include="stringFunc.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

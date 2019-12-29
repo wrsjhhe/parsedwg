@@ -2,12 +2,23 @@
 #include <dwg_api.h>
 #include <cstring>
 #include <iostream>
-#include "ParseObjectFactory.h"
+#include "ParseFile.h"
+
 
 int main()
 {
-	const char* filePath = "D:\\parsedwg\\data\\sample.dwg";
+	const char* filePath = "D:\\\mygit\\parsedwg\\data\\sample_2018.dwg";
 
+	CParseFile parseFile;
+	bool ret = parseFile.Parse(filePath);
+
+	if (!ret)
+	{
+		std::cout << "error" << std::endl;
+	}
+
+
+/*
 	Dwg_Data dwg;
 	memset(&dwg, 0, sizeof(Dwg_Data));
 	dwg.opts = 0;
@@ -49,7 +60,7 @@ int main()
 		}
 
 	}
-
+	*/
 	system("pause");
 	return 0;
 }

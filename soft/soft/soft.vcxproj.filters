@@ -5,9 +5,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Entity">
-      <UniqueIdentifier>{34b0149b-fdc3-4382-8fa3-2bc40e027f04}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Parse">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
@@ -16,48 +13,84 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{e57c7a38-fcd9-4aa3-a213-6223dda54a09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model">
+      <UniqueIdentifier>{34b0149b-fdc3-4382-8fa3-2bc40e027f04}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityBase.cpp">
-      <Filter>Entity</Filter>
+      <Filter>Model</Filter>
     </ClCompile>
     <ClCompile Include="Circle.cpp">
-      <Filter>Entity</Filter>
+      <Filter>Model</Filter>
     </ClCompile>
     <ClCompile Include="ParseObjectFactory.cpp">
       <Filter>Parse</Filter>
     </ClCompile>
     <ClCompile Include="Line.cpp">
-      <Filter>Entity</Filter>
+      <Filter>Model</Filter>
     </ClCompile>
     <ClCompile Include="test.cpp">
       <Filter>test</Filter>
     </ClCompile>
     <ClCompile Include="LWPolyline.cpp">
-      <Filter>Entity</Filter>
+      <Filter>Model</Filter>
     </ClCompile>
     <ClCompile Include="Polyline_3d.cpp">
-      <Filter>Entity</Filter>
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="ParseFile.cpp">
+      <Filter>Parse</Filter>
+    </ClCompile>
+    <ClCompile Include="CadColorMap.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="stringFunc.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Layer.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectBase.cpp">
+      <Filter>Model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EntityBase.h">
-      <Filter>Entity</Filter>
+      <Filter>Model</Filter>
     </ClInclude>
     <ClInclude Include="Circle.h">
-      <Filter>Entity</Filter>
+      <Filter>Model</Filter>
     </ClInclude>
     <ClInclude Include="ParseObjectFactory.h">
       <Filter>Parse</Filter>
     </ClInclude>
     <ClInclude Include="Line.h">
-      <Filter>Entity</Filter>
+      <Filter>Model</Filter>
     </ClInclude>
     <ClInclude Include="LWPolyline.h">
-      <Filter>Entity</Filter>
+      <Filter>Model</Filter>
     </ClInclude>
     <ClInclude Include="Polyline_3d.h">
-      <Filter>Entity</Filter>
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="ParseFile.h">
+      <Filter>Parse</Filter>
+    </ClInclude>
+    <ClInclude Include="CadColorMap.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="stringFunc.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectBase.h">
+      <Filter>Model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

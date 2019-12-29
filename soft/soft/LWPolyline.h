@@ -9,8 +9,6 @@ public:
 	virtual ~CLWPolyline();
 
 
-
-private:
 	uint32_t					 m_num_points;
 	uint32_t					 m_num_bulges;
 	std::vector<BITCODE_2RD> m_points;

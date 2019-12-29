@@ -1,5 +1,8 @@
 #pragma once
 #include "EntityBase.h"
+#include <json/json.h>
+
+struct Utils::RGB;
 
 class CParseObjectFactory
 {
@@ -7,13 +10,22 @@ public:
 	explicit CParseObjectFactory(const Dwg_Object* pObj);
 	~CParseObjectFactory();
 
-	void ParseEnt();
+	bool ParseEnt();
+
+	void GetJsonStr(std::string& strJson);
 
 private:
-	void parseLine();
-	void parseCircle();
+	bool parseLayer2Json();
 
+	bool parseLine2Json();
+	bool parseCircle2Json();
+	bool parseLWPolylin2Json();
+
+private:
+	Json::Value getPointJson(Dwg_Bitcode_3BD point);
+	Json::Value getColorJson(Utils::RGB rgb);
 private:
 	const Dwg_Object* m_pObj;
+	Json::Value       m_json;
 };
 

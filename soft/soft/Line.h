@@ -1,5 +1,6 @@
 #pragma once
 #include "EntityBase.h"
+
 class CLine : public CEntityBase
 {
 public:
@@ -7,8 +8,6 @@ public:
 	virtual ~CLine();
 
 
-
-private:
 	Dwg_Bitcode_3BD m_start;
 	Dwg_Bitcode_3BD m_end;
 	double          m_thickness;

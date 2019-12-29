@@ -1,6 +1,8 @@
 #pragma once
 #include <dwg.h>
 #include <dwg_api.h>
+#include <string>
+#include "CadColorMap.h"
 
 class CEntityBase
 {
@@ -8,9 +10,9 @@ public:
 	explicit CEntityBase(const Dwg_Object_Entity* pEnt);
 	virtual ~CEntityBase();
 
-protected:
+	Utils::RGB  m_color;
+	std::string m_layerName;
 	
 
-private:
-	Dwg_Object_Entity* m_pEntity;
+	 const Dwg_Object_Entity* m_pEntity;
 };
