@@ -131,10 +131,11 @@
     <ClCompile Include="EntityBase.cpp" />
     <ClCompile Include="LWPolyline.cpp" />
     <ClCompile Include="ObjectBase.cpp" />
+    <ClCompile Include="BlockReference.cpp" />
     <ClCompile Include="ParseFile.cpp" />
     <ClCompile Include="Polyline_3d.cpp" />
     <ClCompile Include="stringFunc.cpp" />
-    <ClCompile Include="test.cpp" />
+    <ClCompile Include="run.cpp" />
     <ClCompile Include="ParseObjectFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +145,7 @@
     <ClInclude Include="Line.h" />
     <ClInclude Include="EntityBase.h" />
     <ClInclude Include="ObjectBase.h" />
+    <ClInclude Include="BlockReference.h" />
     <ClInclude Include="ParseFile.h" />
     <ClInclude Include="ParseObjectFactory.h" />
     <ClInclude Include="LWPolyline.h" />

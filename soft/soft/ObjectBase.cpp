@@ -1,6 +1,6 @@
 #include "ObjectBase.h"
 
-CObjectBase::CObjectBase(const Dwg_Object* pObject):
+CObjectBase::CObjectBase(Dwg_Object* pObject):
 	m_pObject(pObject)
 {
 

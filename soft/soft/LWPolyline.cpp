@@ -1,18 +1,16 @@
 #include "LWPolyline.h"
 
-CLWPolyline::CLWPolyline(const Dwg_Object_Entity* pEnt):
+CLWPolyline::CLWPolyline(Dwg_Object_Entity* pEnt):
 	CEntityBase(pEnt)
 {
 	auto pLWPolyline = pEnt->tio.LWPOLYLINE;
-	m_num_points = pLWPolyline->num_points;
-	m_num_bulges = pLWPolyline->num_bulges;
 
-	for (int i = 0;i < m_num_points;++i)
+	for (int i = 0;i < pLWPolyline->num_points;++i)
 	{
 		m_points.emplace_back(pLWPolyline->points[i]);
 	}
 
-	for (int i = 0;i < m_num_bulges; ++i)
+	for (int i = 0;i < pLWPolyline->num_bulges; ++i)
 	{
 		m_bulges.emplace_back(pLWPolyline->bulges[i]);
 	}
@@ -23,4 +21,13 @@ CLWPolyline::CLWPolyline(const Dwg_Object_Entity* pEnt):
 CLWPolyline::~CLWPolyline()
 {
 
+}
+
+void CLWPolyline::TransformBy(const BITCODE_3BD& vector)
+{
+	for (size_t i = 0; i < m_points.size(); ++i)
+	{
+		m_points.at(i).x += vector.x;
+		m_points.at(i).y += vector.y;
+	}
 }

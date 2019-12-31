@@ -9,15 +9,15 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="test">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="utils">
       <UniqueIdentifier>{e57c7a38-fcd9-4aa3-a213-6223dda54a09}</UniqueIdentifier>
     </Filter>
     <Filter Include="Model">
       <UniqueIdentifier>{34b0149b-fdc3-4382-8fa3-2bc40e027f04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="run">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -32,9 +32,6 @@
     </ClCompile>
     <ClCompile Include="Line.cpp">
       <Filter>Model</Filter>
-    </ClCompile>
-    <ClCompile Include="test.cpp">
-      <Filter>test</Filter>
     </ClCompile>
     <ClCompile Include="LWPolyline.cpp">
       <Filter>Model</Filter>
@@ -56,6 +53,12 @@
     </ClCompile>
     <ClCompile Include="ObjectBase.cpp">
       <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="BlockReference.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="run.cpp">
+      <Filter>run</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -90,6 +93,9 @@
       <Filter>Model</Filter>
     </ClInclude>
     <ClInclude Include="ObjectBase.h">
+      <Filter>Model</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockReference.h">
       <Filter>Model</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,6 +1,6 @@
 #include "Circle.h"
 
-CCircle::CCircle(const Dwg_Object_Entity* pEnt):
+CCircle::CCircle(Dwg_Object_Entity* pEnt):
 	CEntityBase(pEnt)
 {
 	auto pCircle = pEnt->tio.CIRCLE;
@@ -12,4 +12,11 @@ CCircle::CCircle(const Dwg_Object_Entity* pEnt):
 CCircle::~CCircle()
 {
 
+}
+
+void CCircle::TransformBy(const BITCODE_3BD& vector)
+{
+	m_center.x += vector.x;
+	m_center.y += vector.y;
+	m_center.z += vector.z;
 }

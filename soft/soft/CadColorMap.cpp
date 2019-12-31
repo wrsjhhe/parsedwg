@@ -266,7 +266,7 @@ static bool IndexToRGB(short colorr, short& r, short& g, short& b)
 	return true;
 }
 
-short Utils::GetCadColorCode(size_t num)
+short Utils::GetCadColorCode(unsigned int num)
 {
 	char hex[100];
 	sprintf(hex, "%x", num);
@@ -281,7 +281,7 @@ short Utils::GetCadColorCode(size_t num)
 	return code;
 }
 
-bool Utils::GetRGBbyCadCode(short code, Utils::RGB& rgb)
+bool Utils::GetRGBbyCadCode(short code, Utils::RGBA& rgb)
 {
 	short r, g, b;
 	if (!IndexToRGB(code, r, g, b))
@@ -289,6 +289,13 @@ bool Utils::GetRGBbyCadCode(short code, Utils::RGB& rgb)
 		return false;
 	}
 
-	rgb = Utils::RGB(r,g,b);
+	rgb = Utils::RGBA(r,g,b);
 	return true;
+}
+
+bool Utils::GetRealRGB(size_t num, Utils::RGBA& rgb)
+{
+	short code = GetCadColorCode(num);
+
+	return GetRGBbyCadCode(code, rgb);
 }

@@ -7,12 +7,18 @@
 class CEntityBase
 {
 public:
-	explicit CEntityBase(const Dwg_Object_Entity* pEnt);
+	explicit CEntityBase(Dwg_Object_Entity* pEnt);
 	virtual ~CEntityBase();
 
-	Utils::RGB  m_color;
+
+	void virtual TransformBy(const BITCODE_3BD& vector)
+	{
+		
+	}
+
+	Utils::RGBA  m_color;
 	std::string m_layerName;
 	
 
-	 const Dwg_Object_Entity* m_pEntity;
+	Dwg_Object_Entity* m_pEntity;
 };

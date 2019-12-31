@@ -31,13 +31,13 @@ bool CParseFile::Parse(std::string strFileName)
 	for (size_t i = 0; i < dwg.num_objects; ++i)
 	{
 		auto obj = dwg.object[i];
-		CParseObjectFactory parseObj(&obj);
-		bool ret = parseObj.ParseEnt();
+		CParseObjectFactory parseObj;
+		Json::Value jsonItem;
+		bool ret = parseObj.ParseEnt(&obj, jsonItem);
 		if (!ret)
 			continue;
 
-		std::string strJson;
-		parseObj.GetJsonStr(strJson);
+		std::string strJson = jsonItem.toStyledString();
 		std::cout << strJson << std::endl;
 	}
 	return true;

@@ -4,12 +4,13 @@
 class CLine : public CEntityBase
 {
 public:
-	explicit CLine(const Dwg_Object_Entity* pEnt);
+	explicit CLine(Dwg_Object_Entity* pEnt);
 	virtual ~CLine();
 
+	virtual void TransformBy(const BITCODE_3BD& vector) override;
 
-	Dwg_Bitcode_3BD m_start;
-	Dwg_Bitcode_3BD m_end;
+	BITCODE_3BD m_start;
+	BITCODE_3BD m_end;
 	double          m_thickness;
 };
 

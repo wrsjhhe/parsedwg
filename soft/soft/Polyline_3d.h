@@ -5,10 +5,10 @@
 class CPolyline3d : public CEntityBase
 {
 public:
-	explicit CPolyline3d(const Dwg_Object_Entity* pEnt);
+	explicit CPolyline3d(Dwg_Object_Entity* pEnt);
 	virtual ~CPolyline3d();
 
+	virtual void TransformBy(const BITCODE_3BD& vector) override;
 
-	uint32_t					 m_num_points;
-	std::vector<Dwg_Bitcode_3BD> m_points;
+	std::vector<BITCODE_3BD>	m_points;
 };
