@@ -1,12 +1,16 @@
 <template>
-  <div>
-    <div id="container"></div>
-  </div>
+  <div id="container"></div>
 </template>
- 
+ <style>
+#container {
+  height: 100%;
+  width: 100%;
+}
+</style>
 <script>
 import * as THREE from "three";
-import CamerControl from "./utils/CamerControl";
+import CamerControl from "./camera/CamerControl";
+import ModelOperation from "./ModelOperation";
 
 function initGrid() {
   let limit = 2000;
@@ -58,7 +62,7 @@ function initGrid() {
     fragmentShader: `
           varying vec3 vColor;
           void main() {
-            gl_FragColor = vec4(vColor, 0.3);
+            gl_FragColor = vec4(vColor, 0.2);
           }
         `,
     vertexColors: THREE.VertexColors,
@@ -74,8 +78,8 @@ export default {
     return {
       camera: null,
       scene: null,
+      sceneHelper: null,
       renderer: null,
-      mesh: null,
       scale: 1
     };
   },
@@ -93,6 +97,7 @@ export default {
       this.camera.lookAt(0, 0, 0);
 
       this.scene = new THREE.Scene();
+      this.sceneHelper = new THREE.Scene();
 
       this.renderer = new THREE.WebGLRenderer({ antialias: true });
       this.renderer.setSize(container.clientWidth, container.clientHeight);
@@ -103,18 +108,21 @@ export default {
 
       this.grid = initGrid();
 
-      this.scene.add(this.grid);
+      this.sceneHelper.add(this.grid);
 
-      let geometry = new THREE.BoxGeometry(100, 100, 100);
+      /*       let geometry = new THREE.BoxGeometry(100, 100, 100);
       let material = new THREE.MeshNormalMaterial();
 
       this.mesh = new THREE.Mesh(geometry, material);
-      this.scene.add(this.mesh);
+      this.scene.add(this.mesh); */
     },
     animate: function() {
       requestAnimationFrame(this.animate);
-      this.mesh.rotation.x += 0.01;
-      this.mesh.rotation.y += 0.02;
+      this.renderer.autoClear = true;
+      //this.mesh.rotation.x += 0.01;
+      // this.mesh.rotation.y += 0.02;
+      this.renderer.render(this.sceneHelper, this.camera);
+      this.renderer.autoClear = false;
       this.renderer.render(this.scene, this.camera);
     },
     //相机移动事件
@@ -132,6 +140,10 @@ export default {
         this.grid.scale.z = k;
         this.scale = k;
       }
+    },
+    onclick: function() {
+      let modelOperation = new ModelOperation();
+      modelOperation.loadToScene(this.scene);
     }
   },
   mounted() {
@@ -145,7 +157,7 @@ export default {
       //重置渲染范围
       this.renderer.setSize(container.clientWidth, container.clientHeight);
 
-      this.renderer.render(this.scene, this.camera);
+      this.renderer.render(this.sceneHelper, this.camera);
     };
   }
 };
