@@ -37,3 +37,4 @@
 /soft/.vs
 /.vs
 /viewer/node_modules
+/server/app/public/uploads
