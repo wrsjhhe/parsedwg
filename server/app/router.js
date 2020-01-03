@@ -6,5 +6,9 @@
 module.exports = app => {
 	const { router, controller } = app;
 	router.get("/", controller.home.index);
-	router.post("/upload", controller.file.upload);
+
+	//文件
+	router.get("/file/preUpdate", controller.file.preUpdate);
+	router.post("/file/onUpload", controller.file.onUpload);
+	router.post("/file/endUpload", controller.file.endUpload);
 };
