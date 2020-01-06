@@ -11,4 +11,6 @@ module.exports = app => {
 	router.get("/file/preUpdate", controller.file.preUpdate);
 	router.post("/file/onUpload", controller.file.onUpload);
 	router.post("/file/endUpload", controller.file.endUpload);
+
+	router.post("/convert/convertDwg", controller.convert.convertDwg);
 };

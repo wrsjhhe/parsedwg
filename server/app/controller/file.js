@@ -89,7 +89,6 @@ class FileController extends Controller {
 		}
 
 		ctx.body = res;
-		return;
 	}
 
 	//上传文件
