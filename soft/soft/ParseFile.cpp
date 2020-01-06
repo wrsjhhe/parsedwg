@@ -3,6 +3,8 @@
 #include <dwg_api.h>
 #include "ParseObjectFactory.h"
 #include <iostream>
+
+
 CParseFile::CParseFile()
 {
 
@@ -28,6 +30,7 @@ bool CParseFile::Parse(std::string strFileName)
 
 	int num = dwg.num_object_refs;
 
+	Json::Value jsonRoot;
 	for (size_t i = 0; i < dwg.num_objects; ++i)
 	{
 		auto obj = dwg.object[i];
@@ -37,8 +40,20 @@ bool CParseFile::Parse(std::string strFileName)
 		if (!ret)
 			continue;
 
-		std::string strJson = jsonItem.toStyledString();
-		std::cout << strJson << std::endl;
+		jsonRoot.append(jsonItem);
 	}
+
+	std::ostringstream os;
+	Json::StreamWriterBuilder builder;
+	builder.settings_["indentation"] = "";
+	std::unique_ptr<Json::StreamWriter> writer(builder.newStreamWriter());
+	writer->write(jsonRoot, &os);
+	std::string str = os.str();
+	m_strJson = str;
 	return true;
+}
+
+std::string CParseFile::GetJson()
+{
+	return m_strJson;
 }

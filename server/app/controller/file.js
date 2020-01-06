@@ -8,6 +8,7 @@ const stream = require("stream");
 const mongoose = require("mongoose");
 const md5 = require("md5");
 const setRes = require("../response");
+const exec = require("child_process").execFile;
 
 // 获取文件Chunk列表
 async function getChunkList(filePath, folderPath) {
@@ -95,7 +96,7 @@ class FileController extends Controller {
 	async onUpload() {
 		const ctx = this.ctx;
 		const fileeStream = await ctx.getFileStream();
-
+		const fileName = fileeStream.filename;
 		//新建一个文件名
 		let fileMd5 = md5(fileeStream);
 		const filePath = path.join(this.uploadPath, fileMd5);
@@ -104,9 +105,35 @@ class FileController extends Controller {
 		const target = path.join(filePath, fileMd5);
 
 		let writeRet = await Utils.writeFileStreamSyn(fileeStream, target);
-		ctx.body = {
-			code: writeRet ? 0 : 1
-		};
+		let convertExePath = "D:/mygit/parsedwg/soft/bin/x64/Debug/soft.exe";
+		let arg = "D:/mygit/parsedwg/data/sample.dwg";
+		if (writeRet) {
+			let getJsonData = async () => {
+				return new Promise(resolve => {
+					exec(convertExePath, [arg], (err, data) => {
+						resolve(data);
+					});
+				})
+			}
+
+			let json = await getJsonData();
+			if (json === null) {
+				ctx.body = {
+					code: 1
+				};
+			} else {
+				ctx.body = {
+					code: 0,
+					value: json
+				};
+			}
+
+		} else {
+			ctx.body = {
+				code: 1
+			};
+		}
+
 	}
 
 	async endUpload() {

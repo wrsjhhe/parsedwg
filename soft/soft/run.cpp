@@ -7,7 +7,13 @@
 
 int main(int argc,char *argv[])
 {
-	const char* filePath = "D:\\mygit\\parsedwg\\data\\sample.dwg";
+	if (argc < 2)
+	{
+		std::cout << "args err" << std::endl;
+		return 0;
+	}
+	
+	const char* filePath = argv[1];
 
 	CParseFile parseFile;
 	bool ret = parseFile.Parse(filePath);
@@ -16,7 +22,9 @@ int main(int argc,char *argv[])
 	{
 		std::cout << "error" << std::endl;
 	}
-
-	system("pause");
+	else
+	{
+		std::cout << parseFile.GetJson() << std::endl;
+	}
 	return 0;
 }

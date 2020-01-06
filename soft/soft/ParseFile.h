@@ -10,5 +10,8 @@ public:
 
 	bool Parse(std::string strFileName);
 
+	std::string GetJson();
 
+private:
+	std::string m_strJson;
 };

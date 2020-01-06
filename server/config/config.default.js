@@ -34,7 +34,19 @@ module.exports = appInfo => {
 			url: "mongodb://127.0.0.1/ParseDwg",
 			options: {}
 		},
-		open() {}
+		open() { }
+	};
+
+	config.cors = {
+		origin: '*',
+		allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH'
+	};
+
+	config.multipart = {
+		whitelist: [   // 只允许上传png格式
+			'.dwg',
+		],
+		fileSize: '100mb',  // 最大5mb  
 	};
 
 	return {

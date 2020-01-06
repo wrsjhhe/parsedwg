@@ -83,6 +83,7 @@ export default {
       scale: 1
     };
   },
+  props: ["geoData"],
   methods: {
     init: function() {
       let container = document.getElementById("container");
@@ -159,6 +160,12 @@ export default {
 
       this.renderer.render(this.sceneHelper, this.camera);
     };
+  },
+  watch: {
+    geoData(newValue, oldValue) {
+      debugger;
+    },
+    deep: true
   }
 };
 </script>

@@ -9,7 +9,9 @@
               <div class="top-grid">
                 <el-upload
                   class="btn-upload"
-                  action="https://jsonplaceholder.typicode.com/posts/"
+                  action="http://127.0.0.1:7001/file/onUpload"
+                  :show-file-list="false"
+                  :on-success="finishConvert"
                 >
                   <el-button size="small" type="primary">点击上传</el-button>
                 </el-upload>
@@ -18,7 +20,7 @@
           </el-row>
         </el-header>
         <el-main>
-          <scene />
+          <scene :geoData="geoData" />
         </el-main>
         <el-footer></el-footer>
       </el-container>
@@ -103,10 +105,22 @@ import Scene from "../component/Scene.vue";
 export default {
   name: "Viewport",
   data() {
-    return {};
+    return {
+      geoData: null
+    };
   },
   components: {
     scene: Scene
+  },
+  methods: {
+    finishConvert(response, file, fileList) {
+      console.log(response);
+      try {
+        this.geoData = JSON.parse(response.value);
+      } catch (err) {
+        console.log(err);
+      }
+    }
   }
 };
 </script>
