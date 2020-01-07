@@ -32,6 +32,9 @@
 *.out
 *.app
 
+*.bak
+*.ilk
+
 /soft/soft/x64
 
 /soft/.vs

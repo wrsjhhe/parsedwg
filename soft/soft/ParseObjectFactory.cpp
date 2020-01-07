@@ -61,6 +61,13 @@ bool CParseObjectFactory::parseEnt(Dwg_Object* pObj, Json::Value& jsonItem, CBlo
 	{
 		return parsePolylin3d2Json(pObj, jsonItem, pBlock);
 	}
+	case DWG_TYPE_HATCH: //Моід
+	{
+		auto hatch = pObj->tio.entity->tio.HATCH;
+		std::string str = Utils::GetCadChar(hatch->name);
+		
+		break;
+	}
 	case DWG_TYPE_INSERT: //їй
 	{
 		return parseBlock2Json(pObj, jsonItem, pBlock);
@@ -95,7 +102,6 @@ bool CParseObjectFactory::parseEntity2Json(Dwg_Object* pObj, Json::Value& jsonIt
 	Utils::RGBA& color = ent.m_color;
 	if (pBlock)
 	{
-		ent.TransformBy(pBlock->m_insert);
 		if (color.r == -1)
 		{
 			color = pBlock->m_color;
