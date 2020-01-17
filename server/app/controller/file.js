@@ -105,16 +105,16 @@ class FileController extends Controller {
 		const target = path.join(filePath, fileMd5);
 
 		let writeRet = await Utils.writeFileStreamSyn(fileeStream, target);
-		let convertExePath = "D:/mygit/parsedwg/soft/bin/x64/Debug/soft.exe";
-		let arg = "D:/mygit/parsedwg/data/sample.dwg";
+		let convertExePath = "C:/code/parsedwg/soft/bin/x64/Debug/soft.exe";
+		let arg = "C:/code/parsedwg/data/sample.dwg";
 		if (writeRet) {
 			let getJsonData = async () => {
 				return new Promise(resolve => {
 					exec(convertExePath, [arg], (err, data) => {
 						resolve(data);
 					});
-				})
-			}
+				});
+			};
 
 			let json = await getJsonData();
 			if (json === null) {
@@ -127,13 +127,11 @@ class FileController extends Controller {
 					value: json
 				};
 			}
-
 		} else {
 			ctx.body = {
 				code: 1
 			};
 		}
-
 	}
 
 	async endUpload() {
