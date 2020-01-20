@@ -90,6 +90,14 @@ class Utils {
 			});
 		});
 	}
+
+	static isInvalidValue(name) {
+		if (name === undefined || name === null || name === "") {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 
 module.exports = Utils;

@@ -175,6 +175,7 @@ bool CParseObjectFactory::parseLWPolylin2Json(Dwg_Object* pObj, Json::Value& jso
 	jsonItem["points"] = jsonPts;
 	jsonItem["bulges"] = jsonBulges;
 	jsonItem["thickness"] = poly.m_thickness;
+	jsonItem["closed"] = poly.m_closed;
 
 	return true;
 }

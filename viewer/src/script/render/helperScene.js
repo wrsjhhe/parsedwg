@@ -1,10 +1,5 @@
-<template>
-	<div id="container"></div>
-</template>
+import * as THREE from "three";
 
-<script>
-import Renderer from "../../render/renderer";
-import ModelSpace from "../../model/ModelSpace";
 function initGrid(_limit, _division) {
 	let limit = _limit;
 	let division = _division;
@@ -62,35 +57,55 @@ function initGrid(_limit, _division) {
 	return grid;
 }
 
-export default {
-	name: "Viewport",
-	data() {
-		return {};
-	},
-	props: ["geoData"],
-	methods: {
-		initScene: function() {
-			let container = document.getElementById("container");
-			let renderer = new Renderer(container);
-			renderer.startAnimate();
+class HelperScene {
+	constructor() {
+		this.scene = new THREE.Scene();
+		this.grid = initGrid(2000, 50);
+		this.scaleY = 1;
+		this.tranX = 0;
+		this.tranZ = 0;
+		this.axesHelper = new THREE.AxesHelper(50);
 
-			renderer.bindModelSpace(ModelSpace);
-		}
-	},
-	mounted() {
-		this.initScene();
-	},
-	watch: {
-		geoData(newValue, oldValue) {
-			debugger;
-		},
-		deep: true
+		this.scene.add(this.grid);
+		this.scene.add(this.axesHelper);
 	}
-};
-</script>
-<style>
-#container {
-	height: 100%;
-	width: 100%;
+
+	dynamicGrid(camera) {
+		let sy = Math.abs(camera.position.y);
+		let k = Math.floor(sy / 800);
+		k < 1 ? (k = 1) : (k = k);
+		if (Math.abs(k - this.scaleY) > 1) {
+			this.grid.scale.x = k;
+			this.grid.scale.z = k;
+			this.scaleY = k;
+
+			this.axesHelper.scale.x = k;
+			this.axesHelper.scale.y = k;
+			this.axesHelper.scale.z = k;
+		}
+
+		let r = camera.position.x < 0;
+		let sx = Math.abs(camera.position.x);
+		k = Math.floor(sx / 40);
+		k < 1 ? (k = 1) : (k = k);
+		if (Math.abs(k - this.tranX) > 1) {
+			let tranX = (k - this.tranX) * 40;
+			r ? (tranX = -tranX) : (tranX = tranX);
+			this.grid.translateX(tranX);
+			this.tranX = k;
+		}
+
+		r = camera.position.z < 0;
+		let sz = Math.abs(camera.position.z);
+		k = Math.floor(sz / 40);
+		k < 1 ? (k = 1) : (k = k);
+		if (Math.abs(k - this.tranZ) > 1) {
+			let tranZ = (k - this.tranZ) * 40;
+			r ? (tranZ = -tranZ) : (tranZ = tranZ);
+			this.grid.translateZ(tranZ);
+			this.tranZ = k;
+		}
+	}
 }
-</style>
+
+export default HelperScene;

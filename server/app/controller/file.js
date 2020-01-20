@@ -52,7 +52,7 @@ class FileController extends Controller {
 		let type = ctx.query.type;
 		let size = ctx.query.size;
 
-		if (md5 === null || name === null || parseInt(size) < 0) {
+		if (Utils.isInvalidValue(md5) || Utils.isInvalidValue(name) || parseInt(size) < 0) {
 			res = setRes(5);
 			ctx.body = res;
 			return;
@@ -105,12 +105,13 @@ class FileController extends Controller {
 		const target = path.join(filePath, fileMd5);
 
 		let writeRet = await Utils.writeFileStreamSyn(fileeStream, target);
-		let convertExePath = "C:/code/parsedwg/soft/bin/x64/Debug/soft.exe";
-		let arg = "C:/code/parsedwg/data/sample.dwg";
+		let exePath = path.resolve("../soft/bin/x64/Debug/soft.exe");
+		//let arg = "C:/code/parsedwg/data/sample.dwg";
+		let arg = target;
 		if (writeRet) {
 			let getJsonData = async () => {
 				return new Promise(resolve => {
-					exec(convertExePath, [arg], (err, data) => {
+					exec(exePath, [arg], (err, data) => {
 						resolve(data);
 					});
 				});
