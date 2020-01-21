@@ -1,4 +1,6 @@
 import * as THREE from "three";
+import Polyline from "./GeoPolyline";
+import Point3Array from "./GeoPoint3Array";
 
 export default class CadJsonToGeometry {
 	constructor(strJson) {
@@ -11,7 +13,17 @@ export default class CadJsonToGeometry {
 		for (let item of objs) {
 			switch (item.type) {
 				case "LWPolyline": {
-					let points = item.points;
+					let pts = item.points;
+					let bulges = item.bulges;
+					let points = new Point3Array();
+					for (let pt of pts) {
+						points.append(pt.x, pt.y, 0);
+					}
+					let polyline = new Polyline(points, bulges);
+					let drawData = polyline.drawData();
+
+					this.geometries.push(drawData);
+					/* let points = item.points;
 					let closed = item.closed;
 					let length = points.length;
 
@@ -31,7 +43,7 @@ export default class CadJsonToGeometry {
 
 					let material = new THREE.LineBasicMaterial({ color: 0xffffff });
 					let line = new THREE.Line(lineGeometry, material);
-					this.geometries.push(line);
+					this.geometries.push(line); */
 
 					break;
 				}

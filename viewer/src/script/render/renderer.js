@@ -66,7 +66,13 @@ class Renderer {
 	}
 
 	addEntity(entity) {
-		this.mainScene.addEntityToModelScene(entity);
+		if (entity instanceof Array) {
+			for (let item of entity) {
+				this.mainScene.addEntityToModelScene(item);
+			}
+		} else {
+			this.mainScene.addEntityToModelScene(entity);
+		}
 	}
 
 	bindModelSpace(modelSpace) {

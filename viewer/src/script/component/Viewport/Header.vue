@@ -32,6 +32,7 @@ export default {
 					id: null,
 					geometry: geo
 				};
+
 				ModelSpace.append(model);
 			}
 		}
