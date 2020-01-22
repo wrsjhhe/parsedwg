@@ -1,5 +1,5 @@
 export default class DbEntity {
-	constructor(params) {
+	constructor() {
 		this.color = null;
 		this.layer = null;
 	}

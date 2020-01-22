@@ -17,7 +17,7 @@ CLWPolyline::CLWPolyline(Dwg_Object_Entity* pEnt):
 
 	m_thickness = pLWPolyline->thickness;
 
-	if (pLWPolyline->flag == 512) 
+	if (pLWPolyline->flag != 0) 
 	{
 		m_closed = true;
 	}
