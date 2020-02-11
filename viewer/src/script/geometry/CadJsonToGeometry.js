@@ -21,9 +21,8 @@ export default class CadJsonToGeometry {
 					}
 					let polyline = new Polyline(points, bulges);
 					polyline.setClosed(item.closed);
-					let drawData = polyline.drawData();
 
-					this.geometries.push(drawData);
+					this.geometries.push(polyline);
 
 					break;
 				}

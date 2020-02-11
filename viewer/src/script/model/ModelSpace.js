@@ -10,7 +10,7 @@ class ModelSpace {
 	append(model) {
 		this.db.push(model);
 
-		this.renderer.addEntity(model.geometry);
+		this.renderer.addEntity(model.geometry.drawData());
 	}
 }
 
