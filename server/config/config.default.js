@@ -29,13 +29,13 @@ module.exports = appInfo => {
 	};
 
 	// 连接数据库
-	exports.mongoose = {
-		client: {
-			url: "mongodb://127.0.0.1/ParseDwg",
-			options: {}
-		},
-		open() { }
-	};
+	// exports.mongoose = {
+	// 	client: {
+	// 		url: "mongodb://127.0.0.1/ParseDwg",
+	// 		options: {}
+	// 	},
+	// 	open() { }
+	// };
 
 	config.cors = {
 		origin: '*',
